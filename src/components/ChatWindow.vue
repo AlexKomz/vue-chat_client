@@ -1,23 +1,22 @@
 <template>
   <div class="chat-window" :class="{ 'chat-window_print': isPrinting }">
     <div class="chat-window__wrapper">
-      <ul class="chat-window__list" ref="window">
-        <li
+      <ul v-if="messages.length" class="chat-window__list" ref="window">
+        <ChatMessage
           v-for="message of messages"
-          class="chat-window__item"
           :key="message.id"
-          :class="{ 'chat-window__item_self': message.isSelf }"
-        >
-          {{ message.text }}
-        </li>
+          :message="message"
+        />
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import ChatMessage from "@/components/ChatMessage";
 export default {
   name: "ChatWindow",
+  components: { ChatMessage },
   props: {
     messages: {
       type: Array,
@@ -29,6 +28,9 @@ export default {
     },
   },
   mounted() {
+    this.scrollIntoBottom();
+  },
+  updated() {
     this.scrollIntoBottom();
   },
   methods: {
@@ -91,51 +93,5 @@ export default {
   margin: 0;
 
   list-style: none;
-}
-
-.chat-window__item {
-  position: relative;
-
-  padding: 10px;
-
-  max-width: 50%;
-
-  border-radius: 10px;
-
-  background-color: var(--green-color);
-  color: var(--main-color);
-}
-
-.chat-window__item:before {
-  content: "";
-
-  position: absolute;
-
-  top: -2px;
-
-  display: block;
-
-  width: 10px;
-  height: 10px;
-
-  background-color: inherit;
-}
-
-.chat-window__item:not(.chat-window__item_self):before {
-  left: 4px;
-
-  transform: rotate(30deg);
-}
-
-.chat-window__item_self {
-  align-self: flex-end;
-
-  background-color: var(--light-green-color);
-}
-
-.chat-window__item_self:before {
-  right: 4px;
-
-  transform: rotate(60deg);
 }
 </style>
