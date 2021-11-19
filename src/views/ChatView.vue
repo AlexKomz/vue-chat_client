@@ -81,6 +81,11 @@ export default {
     submitHandler() {
       if (!this.message) return;
       console.log(this.message);
+      // this.messages.push({
+      //   id: Date.now(),
+      //   isSelf: true,
+      //   text: this.message,
+      // });
       this.message = "";
     },
   },
