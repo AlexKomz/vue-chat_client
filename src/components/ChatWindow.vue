@@ -111,7 +111,7 @@ export default {
 
   position: absolute;
 
-  top: -4px;
+  top: -2px;
 
   display: block;
 
@@ -119,12 +119,12 @@ export default {
   height: 10px;
 
   background-color: inherit;
-
-  transform: rotate(45deg);
 }
 
 .chat-window__item:not(.chat-window__item_self):before {
-  left: 8px;
+  left: 4px;
+
+  transform: rotate(30deg);
 }
 
 .chat-window__item_self {
@@ -134,6 +134,8 @@ export default {
 }
 
 .chat-window__item_self:before {
-  right: 8px;
+  right: 4px;
+
+  transform: rotate(60deg);
 }
 </style>
