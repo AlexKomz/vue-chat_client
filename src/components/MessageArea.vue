@@ -1,7 +1,7 @@
 <template>
   <div
     class="message-area"
-    :class="{ 'message-area_placeholder': withPlaceholder }"
+    :class="{ 'message-area_placeholder': hasPlaceholder }"
   >
     <textarea
       class="message-area__text"
@@ -24,11 +24,11 @@ export default {
     },
   },
   data: () => ({
-    hasPlaceholder: true,
+    isFocused: false,
   }),
   computed: {
-    withPlaceholder() {
-      return this.hasPlaceholder && !this.message;
+    hasPlaceholder() {
+      return !this.isFocused && !this.message;
     },
   },
   methods: {
@@ -37,13 +37,11 @@ export default {
     },
 
     focusHandler() {
-      this.hasPlaceholder = false;
+      this.isFocused = true;
     },
 
     blurHandler() {
-      if (!this.message) {
-        this.hasPlaceholder = true;
-      }
+      this.isFocused = false;
     },
 
     keypressHandler(event) {
