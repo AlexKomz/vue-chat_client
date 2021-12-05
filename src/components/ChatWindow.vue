@@ -66,7 +66,7 @@ export default {
   position: absolute;
   bottom: 2px;
 
-  color: var(--dark-green-color);
+  color: var(--send-button-bg-color);
 
   font-size: 14px;
 }
