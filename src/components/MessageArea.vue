@@ -11,12 +11,20 @@
       @blur="blurHandler"
       @keypress="keypressHandler"
     />
+
+    <ButtonWithIcon class="message-area__emoji">
+      <EmojiSVG class="emoji__icon" />
+    </ButtonWithIcon>
   </div>
 </template>
 
 <script>
+import ButtonWithIcon from "@/components/ButtonWithIcon";
+import EmojiSVG from "../assets/emoji-icon.svg";
+
 export default {
   name: "MessageArea",
+  components: { ButtonWithIcon, EmojiSVG },
   props: {
     message: {
       type: String,
@@ -100,5 +108,18 @@ export default {
 
   border: none;
   outline: none;
+}
+
+.message-area__emoji {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.emoji__icon {
+  width: 18px;
+  height: 18px;
+
+  fill: var(--black-color);
 }
 </style>
