@@ -16,7 +16,7 @@ export default {
   font-size: 30px;
 
   color: var(--main-color);
-  background-color: var(--dark-green-color);
+  background-color: var(--send-button-bg-color);
 
   cursor: pointer;
 
@@ -25,7 +25,7 @@ export default {
 
 .submit-button:hover,
 .submit-button:focus {
-  background-color: rgba(15, 33, 26, 0.75);
+  background-color: var(--send-button-bg-focus-color);
 }
 
 .submit-button:focus {
@@ -33,6 +33,6 @@ export default {
 }
 
 .submit-button:active {
-  background-color: rgba(15, 33, 26, 0.5);
+  background-color: var(--send-button-bg-active-color);
 }
 </style>
