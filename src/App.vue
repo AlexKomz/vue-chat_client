@@ -21,15 +21,18 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
-  --main-bg-color: #dcdfe4;
+  --main-bg-color: #f3e9e7;
   --side-bg-color: #ffffff;
 
   --main-color: #ffffff;
-  --black-color: #000000;
+  --black-color: rgba(0, 0, 0, 0.6);
 
-  --green-color: #666b3a;
-  --light-green-color: #adab76;
-  --dark-green-color: #0f211a;
+  --companion-message-bg-color: #e76f3d;
+  --message-bg-color: #00a7c7;
+
+  --send-button-bg-color: #00a7c7;
+  --send-button-bg-focus-color: #008ba7;
+  --send-button-bg-active-color: #9bcfe0;
 }
 
 body {
