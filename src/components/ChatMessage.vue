@@ -30,7 +30,7 @@ export default {
 
   border-radius: 10px;
 
-  background-color: var(--green-color);
+  background-color: var(--companion-message-bg-color);
   color: var(--main-color);
 }
 
@@ -58,7 +58,7 @@ export default {
 .chat-item_self {
   align-self: flex-end;
 
-  background-color: var(--light-green-color);
+  background-color: var(--message-bg-color);
 }
 
 .chat-item_self:before {
