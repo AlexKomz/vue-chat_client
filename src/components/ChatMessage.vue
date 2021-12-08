@@ -26,7 +26,7 @@ export default {
 
   padding: 10px;
 
-  max-width: 50%;
+  max-width: 80%;
 
   border-radius: 10px;
 
