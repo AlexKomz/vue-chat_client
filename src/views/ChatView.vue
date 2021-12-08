@@ -17,6 +17,8 @@ import ChatWindow from "@/components/ChatWindow";
 import MessageArea from "@/components/MessageArea";
 import ChatButton from "@/components/ChatButton";
 
+import { ROOT, SEARCH } from "@/router/pathes";
+
 export default {
   name: "ChatView",
   components: { ChatButton, MessageArea, ChatWindow },
@@ -24,11 +26,22 @@ export default {
     message: "",
     isPrinting: false,
     messages: [],
-    companionID: null,
+    isOut: false,
   }),
+  beforeRouteEnter(to, from, next) {
+    if (from.path !== SEARCH) next(ROOT);
+    next();
+  },
   beforeRouteLeave(to, from, next) {
-    const MESSAGE = "Do you really want to leave? The chat may be interrupted!";
-    this.beforeTabChange(MESSAGE, next);
+    if (this.isOut) {
+      next();
+    } else {
+      const MESSAGE =
+        "Do you really want to leave? The chat may be interrupted!";
+      const answer = window.confirm(MESSAGE);
+      this.isOut = answer;
+      next(answer);
+    }
   },
   methods: {
     submitHandler() {
@@ -39,14 +52,6 @@ export default {
         text: this.message,
       });
       this.message = "";
-    },
-    beforeTabChange(message, next) {
-      const answer = window.confirm(message);
-      if (answer) {
-        next();
-      } else {
-        next(false);
-      }
     },
   },
 };
