@@ -14,6 +14,7 @@
 
 <script>
 import ChatMessage from "@/components/ChatMessage";
+
 export default {
   name: "ChatWindow",
   components: { ChatMessage },
@@ -66,7 +67,7 @@ export default {
   position: absolute;
   bottom: 2px;
 
-  color: var(--send-button-bg-color);
+  color: var(--black-color);
 
   font-size: 14px;
 }
@@ -84,12 +85,15 @@ export default {
 .chat-window__list {
   position: absolute;
 
+  right: 0;
+  left: 0;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 
-  padding: 6px 0 0 0;
+  padding: 6px 6px 6px 0;
   margin: 0;
 
   list-style: none;
