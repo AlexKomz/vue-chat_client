@@ -29,9 +29,8 @@ export default {
   --companion-message-bg-color: #e76f3d;
   --message-bg-color: #00a7c7;
 
-  --send-button-bg-color: #00a7c7;
-  --send-button-bg-focus-color: #008ba7;
-  --send-button-bg-active-color: #9bcfe0;
+  --button-bg-focus-color: #008ba7;
+  --button-bg-active-color: #9bcfe0;
 }
 
 body {
