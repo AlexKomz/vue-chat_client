@@ -2,7 +2,7 @@
   <div class="app">
     <div class="app__wrapper">
       <ChatHeader />
-      <RouterView />
+      <RouterView class="app_view" />
     </div>
   </div>
 </template>
@@ -62,5 +62,9 @@ body {
   height: 98%;
 
   margin: 5px;
+}
+
+.app_view {
+  flex-grow: 1;
 }
 </style>
