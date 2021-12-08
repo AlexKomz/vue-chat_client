@@ -4,10 +4,10 @@
       <ButtonWithIcon class="header__settings">
         <SettingsSVG class="settings__icon" />
       </ButtonWithIcon>
-      <a href="#" class="header__wrapper">
+      <div class="header__wrapper">
         <span class="header__dark">Simple</span>
         <span class="header__light">Chat</span>
-      </a>
+      </div>
     </nav>
   </BackgroundWrapper>
 </template>
@@ -35,7 +35,6 @@ export default {
 }
 
 .header__wrapper {
-  text-decoration: none;
   font-size: 76px;
   font-weight: bold;
   user-select: none;
