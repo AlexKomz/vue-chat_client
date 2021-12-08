@@ -1,22 +1,25 @@
 <template>
-  <nav class="header">
-    <ButtonWithIcon class="header__settings">
-      <SettingsSVG class="settings__icon" />
-    </ButtonWithIcon>
-    <a href="#" class="header__wrapper">
-      <span class="header__dark">Simple</span>
-      <span class="header__light">Chat</span>
-    </a>
-  </nav>
+  <BackgroundWrapper>
+    <nav class="header">
+      <ButtonWithIcon class="header__settings">
+        <SettingsSVG class="settings__icon" />
+      </ButtonWithIcon>
+      <a href="#" class="header__wrapper">
+        <span class="header__dark">Simple</span>
+        <span class="header__light">Chat</span>
+      </a>
+    </nav>
+  </BackgroundWrapper>
 </template>
 
 <script>
+import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
-import SettingsSVG from "../assets/settings-icon.svg";
+import SettingsSVG from "@/assets/settings-icon.svg";
 
 export default {
   name: "ChatHeader",
-  components: { ButtonWithIcon, SettingsSVG },
+  components: { BackgroundWrapper, ButtonWithIcon, SettingsSVG },
 };
 </script>
 
@@ -29,13 +32,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  grid-area: header;
-
-  border-radius: 10px;
-
-  background-color: var(--side-bg-color);
-  box-shadow: 0 0 6px 0 var(--black-color);
 }
 
 .header__wrapper {

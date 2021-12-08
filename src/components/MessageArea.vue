@@ -1,30 +1,33 @@
 <template>
-  <div
-    class="message-area"
-    :class="{ 'message-area_placeholder': hasPlaceholder }"
-  >
-    <textarea
-      class="message-area__text"
-      :value="message"
-      @input="inputHandler"
-      @focus="focusHandler"
-      @blur="blurHandler"
-      @keypress="keypressHandler"
-    />
+  <BackgroundWrapper>
+    <div
+      class="message-area"
+      :class="{ 'message-area_placeholder': hasPlaceholder }"
+    >
+      <textarea
+        class="message-area__text"
+        :value="message"
+        @input="inputHandler"
+        @focus="focusHandler"
+        @blur="blurHandler"
+        @keypress="keypressHandler"
+      />
 
-    <ButtonWithIcon class="message-area__emoji">
-      <EmojiSVG class="emoji__icon" />
-    </ButtonWithIcon>
-  </div>
+      <ButtonWithIcon class="message-area__emoji">
+        <EmojiSVG class="emoji__icon" />
+      </ButtonWithIcon>
+    </div>
+  </BackgroundWrapper>
 </template>
 
 <script>
+import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
-import EmojiSVG from "../assets/emoji-icon.svg";
+import EmojiSVG from "@/assets/emoji-icon.svg";
 
 export default {
   name: "MessageArea",
-  components: { ButtonWithIcon, EmojiSVG },
+  components: { BackgroundWrapper, ButtonWithIcon, EmojiSVG },
   props: {
     message: {
       type: String,
@@ -67,11 +70,6 @@ export default {
   position: relative;
 
   padding: 10px;
-
-  border-radius: 10px;
-
-  background-color: var(--side-bg-color);
-  box-shadow: 0 0 6px 0 var(--black-color);
 }
 
 .message-area_placeholder:before {

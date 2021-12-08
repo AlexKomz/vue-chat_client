@@ -1,23 +1,26 @@
 <template>
-  <div class="chat-window" :class="{ 'chat-window_print': isPrinting }">
-    <div class="chat-window__wrapper">
-      <ul v-if="messages.length" class="chat-window__list" ref="window">
-        <ChatMessage
-          v-for="message of messages"
-          :key="message.id"
-          :message="message"
-        />
-      </ul>
+  <BackgroundWrapper>
+    <div class="chat-window" :class="{ 'chat-window_print': isPrinting }">
+      <div class="chat-window__wrapper">
+        <ul v-if="messages.length" class="chat-window__list" ref="window">
+          <ChatMessage
+            v-for="message of messages"
+            :key="message.id"
+            :message="message"
+          />
+        </ul>
+      </div>
     </div>
-  </div>
+  </BackgroundWrapper>
 </template>
 
 <script>
+import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ChatMessage from "@/components/ChatMessage";
 
 export default {
   name: "ChatWindow",
-  components: { ChatMessage },
+  components: { BackgroundWrapper, ChatMessage },
   props: {
     messages: {
       type: Array,
@@ -51,14 +54,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  grid-area: window;
-
   padding: 25px;
-
-  border-radius: 10px;
-
-  background-color: var(--side-bg-color);
-  box-shadow: 0 0 6px 0 var(--black-color);
 }
 
 .chat-window_print:after {
