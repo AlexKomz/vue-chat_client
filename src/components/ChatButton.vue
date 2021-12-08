@@ -1,10 +1,12 @@
 <template>
-  <button class="submit-button">&#10149;</button>
+  <button class="submit-button">
+    <slot />
+  </button>
 </template>
 
 <script>
 export default {
-  name: "SubmitButton",
+  name: "ChatButton",
 };
 </script>
 
@@ -13,14 +15,12 @@ export default {
   border: none;
   border-radius: 10px;
 
-  font-size: 30px;
-
+  font: inherit;
   color: var(--main-color);
+
   background-color: var(--send-button-bg-color);
 
   cursor: pointer;
-
-  transform: scale(-1, 1);
 }
 
 .submit-button:hover,
