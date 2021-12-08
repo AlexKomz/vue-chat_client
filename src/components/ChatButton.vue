@@ -18,14 +18,14 @@ export default {
   font: inherit;
   color: var(--main-color);
 
-  background-color: var(--send-button-bg-color);
+  background-color: var(--message-bg-color);
 
   cursor: pointer;
 }
 
 .submit-button:hover,
 .submit-button:focus {
-  background-color: var(--send-button-bg-focus-color);
+  background-color: var(--button-bg-focus-color);
 }
 
 .submit-button:focus {
@@ -33,6 +33,6 @@ export default {
 }
 
 .submit-button:active {
-  background-color: var(--send-button-bg-active-color);
+  background-color: var(--button-bg-active-color);
 }
 </style>
