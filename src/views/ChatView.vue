@@ -1,6 +1,10 @@
 <template>
   <div class="chat-view">
-    <ChatWindow :messages="messages" :isPrinting="isPrinting" />
+    <ChatWindow
+      class="chat-view__window"
+      :messages="messages"
+      :isPrinting="isPrinting"
+    />
     <MessageArea :message.sync="message" @submit="submitHandler" />
     <SubmitButton @click.native="submitHandler" />
   </div>
@@ -42,7 +46,10 @@ export default {
 
   display: grid;
   grid-template: 1fr 100px / 1fr 75px;
-  grid-template-areas: "window window";
   gap: 10px;
+}
+
+.chat-view__window {
+  grid-column: span 2;
 }
 </style>
