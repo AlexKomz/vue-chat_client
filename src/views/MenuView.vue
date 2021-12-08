@@ -1,10 +1,8 @@
 <template>
   <BackgroundWrapper>
     <div class="menu">
-      <ChatButton class="menu__start-button">
-        <RouterLink class="menu__link" to="/chat" exact>
-          Start chatting!
-        </RouterLink>
+      <ChatButton class="menu__start-button" @click.native="clickHandler">
+        Start chatting!
       </ChatButton>
     </div>
   </BackgroundWrapper>
@@ -14,9 +12,16 @@
 import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ChatButton from "@/components/ChatButton";
 
+import { SEARCH } from "@/router/pathes";
+
 export default {
   name: "MenuView",
   components: { ChatButton, BackgroundWrapper },
+  methods: {
+    clickHandler() {
+      this.$router.push(SEARCH);
+    },
+  },
 };
 </script>
 
@@ -34,11 +39,5 @@ export default {
   font-weight: bold;
   line-height: 26px;
   text-transform: uppercase;
-}
-
-.menu__link {
-  text-decoration: none;
-  color: inherit;
-  font: inherit;
 }
 </style>
