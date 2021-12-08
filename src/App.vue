@@ -2,18 +2,17 @@
   <div class="app">
     <div class="app__wrapper">
       <ChatHeader />
-      <ChatView />
+      <RouterView />
     </div>
   </div>
 </template>
 
 <script>
 import ChatHeader from "@/components/ChatHeader";
-import ChatView from "@/views/ChatView";
 
 export default {
   name: "App",
-  components: { ChatHeader, ChatView },
+  components: { ChatHeader },
 };
 </script>
 
