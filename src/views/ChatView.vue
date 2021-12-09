@@ -73,4 +73,10 @@ export default {
 
   transform: scale(-1, 1);
 }
+
+@media (max-width: 426px) {
+  .chat-view {
+    grid-template: 1fr 75px / 1fr 50px;
+  }
+}
 </style>
