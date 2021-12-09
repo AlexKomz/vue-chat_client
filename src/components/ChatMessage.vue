@@ -4,7 +4,9 @@
     :key="message.id"
     :class="{ 'chat-item_self': message.isSelf }"
   >
-    {{ message.text }}
+    <span v-for="(line, index) of textSplitIntoLines" :key="`${line}_${index}`">
+      {{ line }}
+    </span>
   </li>
 </template>
 
@@ -14,7 +16,12 @@ export default {
   props: {
     message: {
       type: Object,
-      default: () => ({}),
+      required: true,
+    },
+  },
+  computed: {
+    textSplitIntoLines() {
+      return this.message.text.split("\n");
     },
   },
 };
@@ -23,6 +30,9 @@ export default {
 <style scoped>
 .chat-item {
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 
   padding: 10px;
 
