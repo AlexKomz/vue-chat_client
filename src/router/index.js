@@ -1,9 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import { ROOT, SEARCH, CHAT, OTHER } from "./pathes";
+import { ROOT, SETTINGS, SEARCH, CHAT, OTHER } from "./pathes";
 
 import MenuView from "@/views/MenuView";
+import SettingsView from "@/views/SettingsView";
 import ChatView from "@/views/ChatView";
 import SearchView from "@/views/SearchView";
 
@@ -14,6 +15,10 @@ export default new Router({
     {
       path: ROOT,
       component: MenuView,
+    },
+    {
+      path: SETTINGS,
+      component: SettingsView,
     },
     {
       path: SEARCH,
