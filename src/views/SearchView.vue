@@ -19,7 +19,7 @@ export default {
     if (from.path !== ROOT) next(ROOT);
     next();
   },
-  mounted() {
+  created() {
     setTimeout(() => {
       this.$router.push(CHAT);
     }, 1000);
