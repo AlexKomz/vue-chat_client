@@ -1,6 +1,6 @@
 <template>
   <BackgroundWrapper>
-    <nav class="header">
+    <nav :class="headerMobileClass" class="header">
       <ButtonWithIcon
         v-if="!isMenuPath"
         class="header__exit"
@@ -8,7 +8,7 @@
       >
         <ArrowSVG class="arrow__icon" />
       </ButtonWithIcon>
-      <div class="header__wrapper">
+      <div :class="wrapperMobileClass" class="header__wrapper">
         <span class="header__dark">Simple</span>
         <span class="header__light">Chat</span>
       </div>
@@ -38,6 +38,12 @@ export default {
     isMenuPath() {
       return this.to.path === ROOT;
     },
+    headerMobileClass() {
+      return { header_mobile: !this.isMenuPath };
+    },
+    wrapperMobileClass() {
+      return { header__wrapper_mobile: !this.isMenuPath };
+    },
   },
   watch: {
     $route(to, from) {
@@ -57,11 +63,13 @@ export default {
 .header {
   position: relative;
 
-  min-height: 100px;
+  height: 100px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: height 0.4s;
 }
 
 .header__wrapper {
@@ -111,5 +119,15 @@ export default {
   fill: var(--companion-message-bg-color);
 
   transform: rotate(180deg);
+}
+
+@media (max-width: 426px) {
+  .header_mobile {
+    height: 32px;
+  }
+
+  .header__wrapper_mobile {
+    display: none;
+  }
 }
 </style>
