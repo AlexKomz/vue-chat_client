@@ -83,19 +83,6 @@ export default {
   left: 10px;
 }
 
-.message-area:after {
-  position: absolute;
-
-  content: "shift + enter / enter";
-
-  display: block;
-
-  font-size: 12px;
-
-  bottom: 5px;
-  right: 5px;
-}
-
 .message-area__text {
   width: 100%;
   height: 100%;
@@ -120,5 +107,20 @@ export default {
   height: 18px;
 
   fill: var(--black-color);
+}
+
+@media (min-width: 426px) {
+  .message-area:after {
+    position: absolute;
+
+    content: "shift + enter / enter";
+
+    display: block;
+
+    font-size: 12px;
+
+    bottom: 5px;
+    right: 5px;
+  }
 }
 </style>
