@@ -4,7 +4,11 @@
     :key="message.id"
     :class="{ 'chat-item_self': message.isSelf }"
   >
-    <span v-for="(line, index) of textSplitIntoLines" :key="`${line}_${index}`">
+    <span
+      v-for="(line, index) of textSplitIntoLines"
+      :key="`${line}_${index}`"
+      class="chat-item__line"
+    >
       {{ line }}
     </span>
   </li>
@@ -75,5 +79,9 @@ export default {
   right: 4px;
 
   transform: rotate(60deg);
+}
+
+.chat-item__line {
+  word-break: break-all;
 }
 </style>
