@@ -1,13 +1,20 @@
 <template>
   <BackgroundWrapper>
     <nav class="header">
-      <ButtonWithIcon class="header__settings">
-        <SettingsSVG class="settings__icon" />
+      <ButtonWithIcon
+        v-if="!isMenuPath"
+        class="header__exit"
+        @click.native="exitClickHandler"
+      >
+        <ArrowSVG class="arrow__icon" />
       </ButtonWithIcon>
       <div class="header__wrapper">
         <span class="header__dark">Simple</span>
         <span class="header__light">Chat</span>
       </div>
+      <ButtonWithIcon v-if="isMenuPath" class="header__settings">
+        <SettingsSVG class="settings__icon" />
+      </ButtonWithIcon>
     </nav>
   </BackgroundWrapper>
 </template>
@@ -16,10 +23,33 @@
 import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
 import SettingsSVG from "@/assets/settings-icon.svg";
+import ArrowSVG from "@/assets/arrow-icon.svg";
+
+import { ROOT } from "@/router/pathes";
 
 export default {
   name: "ChatHeader",
-  components: { BackgroundWrapper, ButtonWithIcon, SettingsSVG },
+  components: { BackgroundWrapper, ButtonWithIcon, SettingsSVG, ArrowSVG },
+  data: () => ({
+    to: { path: location.pathname },
+    from: null,
+  }),
+  computed: {
+    isMenuPath() {
+      return this.to.path === ROOT;
+    },
+  },
+  watch: {
+    $route(to, from) {
+      this.to = to;
+      this.from = from;
+    },
+  },
+  methods: {
+    exitClickHandler() {
+      this.$router.push(ROOT);
+    },
+  },
 };
 </script>
 
@@ -65,6 +95,21 @@ export default {
   width: 20px;
   height: 20px;
 
-  fill: var(--black-color);
+  fill: var(--message-bg-color);
+}
+
+.header__exit {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+
+.arrow__icon {
+  width: 20px;
+  height: 20px;
+
+  fill: var(--companion-message-bg-color);
+
+  transform: rotate(180deg);
 }
 </style>
