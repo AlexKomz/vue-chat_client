@@ -12,7 +12,11 @@
         <span class="header__dark">Simple</span>
         <span class="header__light">Chat</span>
       </div>
-      <ButtonWithIcon v-if="isMenuPath" class="header__settings">
+      <ButtonWithIcon
+        v-if="isMenuPath"
+        class="header__settings"
+        @click.native="settingsClickHandler"
+      >
         <SettingsSVG class="settings__icon" />
       </ButtonWithIcon>
     </nav>
@@ -25,7 +29,7 @@ import ButtonWithIcon from "@/components/ButtonWithIcon";
 import SettingsSVG from "@/assets/settings-icon.svg";
 import ArrowSVG from "@/assets/arrow-icon.svg";
 
-import { ROOT } from "@/router/pathes";
+import { ROOT, SETTINGS } from "@/router/pathes";
 
 export default {
   name: "ChatHeader",
@@ -55,6 +59,9 @@ export default {
     exitClickHandler() {
       this.$router.push(ROOT);
     },
+    settingsClickHandler() {
+      this.$router.push(SETTINGS);
+    },
   },
 };
 </script>
@@ -76,6 +83,8 @@ export default {
   font-size: 76px;
   font-weight: bold;
   user-select: none;
+
+  transition: font-size 0.4s;
 }
 
 .header__dark {
@@ -122,12 +131,16 @@ export default {
 }
 
 @media (max-width: 426px) {
-  .header_mobile {
-    height: 32px;
+  .header__wrapper {
+    font-size: 50px;
   }
+}
 
-  .header__wrapper_mobile {
-    display: none;
-  }
+.header_mobile {
+  height: 32px;
+}
+
+.header__wrapper_mobile {
+  font-size: 24px;
 }
 </style>
