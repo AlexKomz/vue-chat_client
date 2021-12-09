@@ -101,6 +101,7 @@ export default {
   height: 100%;
 
   font-size: 16px;
+  color: var(--black-color);
 
   resize: none;
 
