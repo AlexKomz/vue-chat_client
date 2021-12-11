@@ -13,29 +13,53 @@
         @keypress="keypressHandler"
       />
 
-      <ButtonWithIcon class="message-area__emoji">
+      <ButtonWithIcon
+        class="message-area__emoji"
+        @click.native="emojiPickerToggleHandler"
+      >
         <EmojiSVG class="emoji__icon" />
       </ButtonWithIcon>
+
+      <CustomEmojiPicker
+        v-click-outside="emojiPickerHide"
+        v-show="isEmojiPickerOpen"
+        @emojiClick="emojiClickHandler"
+      />
     </div>
   </BackgroundWrapper>
 </template>
 
 <script>
+import ClickOutside from "vue-click-outside";
+
 import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
+import CustomEmojiPicker from "@/components/CustomEmojiPicker";
 import EmojiSVG from "@/assets/emoji-icon.svg";
 
 export default {
   name: "MessageArea",
-  components: { BackgroundWrapper, ButtonWithIcon, EmojiSVG },
+  components: {
+    CustomEmojiPicker,
+    BackgroundWrapper,
+    ButtonWithIcon,
+    EmojiSVG,
+  },
+  directives: {
+    ClickOutside,
+  },
   props: {
     message: {
       type: String,
       default: "",
     },
   },
+  mounted() {
+    this.popupItem = this.$el;
+  },
   data: () => ({
     isFocused: false,
+    isEmojiPickerOpen: false,
   }),
   computed: {
     hasPlaceholder() {
@@ -44,7 +68,19 @@ export default {
   },
   methods: {
     inputHandler(event) {
-      this.$emit("update:message", event.target.value.trim());
+      this.$emit("update:message", event.target.value);
+    },
+
+    emojiClickHandler(emoji) {
+      this.$emit("update:message", this.message + emoji);
+    },
+
+    emojiPickerToggleHandler() {
+      this.isEmojiPickerOpen = !this.isEmojiPickerOpen;
+    },
+
+    emojiPickerHide() {
+      this.isEmojiPickerOpen = false;
     },
 
     focusHandler() {
@@ -88,7 +124,6 @@ export default {
   height: 100%;
 
   font-size: 16px;
-  color: var(--black-color);
 
   resize: none;
 
