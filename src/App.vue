@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="app__wrapper">
-      <!--      <ChatHeader />-->
+      <ChatHeader />
       <RouterView class="app_view" />
     </div>
   </div>

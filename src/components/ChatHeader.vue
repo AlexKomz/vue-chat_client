@@ -76,6 +76,8 @@ export default {
   align-items: center;
   justify-content: center;
 
+  background-color: black;
+
   transition: height 0.4s;
 }
 
