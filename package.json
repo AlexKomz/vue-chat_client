@@ -5,9 +5,6 @@
   "main": "main.js",
   "author": "Aleksandr Komzoltsev",
   "license": "ISC",
-  "keywords": [
-    "github-actions"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
