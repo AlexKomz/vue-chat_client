@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     submitHandler() {
-      if (!this.message) return;
+      if (!this.message.trim()) return;
       this.messages.push({
         id: Date.now(),
         isSelf: true,
