@@ -5,11 +5,11 @@
     :class="{ 'chat-item_self': message.isSelf }"
   >
     <span
-      v-for="(line, index) of textSplitIntoLines"
+      v-for="(line, index) of messageLines"
       :key="`${line}_${index}`"
       class="chat-item__line"
     >
-      {{ line }}
+      {{ line.replaceAll(" ", "&nbsp;") }}
     </span>
   </li>
 </template>
@@ -24,7 +24,7 @@ export default {
     },
   },
   computed: {
-    textSplitIntoLines() {
+    messageLines() {
       return this.message.text.split("\n");
     },
   },
