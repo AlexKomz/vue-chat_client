@@ -12,7 +12,3 @@ module.exports = {
       .loader("vue-svg-loader");
   },
 };
-
-module.exports = {
-  publicPath: "/vue-chat_client/",
-};
