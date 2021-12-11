@@ -11,6 +11,7 @@ import SearchView from "@/views/SearchView";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: ROOT,
