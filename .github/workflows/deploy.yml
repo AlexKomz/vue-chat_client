@@ -31,5 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set git config
+        run: |
+          git config --global user.email "${{env.GITHUB_ACTOR}}"
+          git config --global user.name "${{env.GITHUB_ACTOR}}"
+
       - name: Run the deploy sctipt
         run: npm run deploy
