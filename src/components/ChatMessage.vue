@@ -53,7 +53,7 @@ export default {
 
   position: absolute;
 
-  top: -2px;
+  top: -8px;
 
   display: block;
 
@@ -61,12 +61,14 @@ export default {
   height: 10px;
 
   background-color: inherit;
+
+  clip-path: polygon(50% 25%, 100% 100%, 0 100%);
 }
 
 .chat-item:not(.chat-item_self):before {
-  left: 4px;
+  left: 2px;
 
-  transform: rotate(30deg);
+  transform: rotate(-16deg);
 }
 
 .chat-item_self {
@@ -76,9 +78,9 @@ export default {
 }
 
 .chat-item_self:before {
-  right: 4px;
+  right: 2px;
 
-  transform: rotate(60deg);
+  transform: rotate(16deg);
 }
 
 .chat-item__line {
