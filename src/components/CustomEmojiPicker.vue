@@ -15,11 +15,16 @@ export default {
   },
   mounted() {
     this.$refs.picker.addEventListener("emoji-click", this.clickHandler);
+
     const searchRowEl =
       this.$refs.picker.shadowRoot.querySelector(".search-row");
     if (searchRowEl) {
       searchRowEl.remove();
     }
+
+    const picker = this.$refs.picker.shadowRoot.querySelector(".picker");
+    picker.style.borderRadius = "10px";
+    picker.style.boxShadow = "0 0 4px 0 rgba(0, 0, 0, 0.6)";
   },
   methods: {
     clickHandler(event) {
