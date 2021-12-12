@@ -54,7 +54,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  padding: 25px;
+  padding: 20px;
 }
 
 .chat-window_print:after {
@@ -93,5 +93,16 @@ export default {
   margin: 0;
 
   list-style: none;
+}
+
+@media (max-width: 426px) {
+  .chat-window {
+    padding: 4px;
+  }
+
+  .chat-window__list {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 </style>

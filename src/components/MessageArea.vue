@@ -158,4 +158,15 @@ export default {
     right: 5px;
   }
 }
+
+@media (max-width: 426px) {
+  .message-area {
+    padding: 4px 18px 4px 4px;
+  }
+
+  .message-area_placeholder:before {
+    top: 4px;
+    left: 4px;
+  }
+}
 </style>

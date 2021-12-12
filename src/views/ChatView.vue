@@ -60,7 +60,7 @@ export default {
 <style scoped>
 .chat-view {
   display: grid;
-  grid-template: 1fr 100px / 1fr 75px;
+  grid-template: 1fr 100px / 1fr 70px;
   gap: 10px;
 }
 
@@ -76,7 +76,11 @@ export default {
 
 @media (max-width: 426px) {
   .chat-view {
-    grid-template: 1fr 75px / 1fr 50px;
+    grid-template: 1fr 70px / 1fr 50px;
+  }
+
+  .chat-view__submit-button {
+    font-size: 24px;
   }
 }
 </style>
