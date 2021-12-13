@@ -17,31 +17,22 @@ import ChatWindow from "@/components/ChatWindow";
 import MessageArea from "@/components/MessageArea";
 import ChatButton from "@/components/ChatButton";
 
+import { beforeLeaveMixin } from "@/mixins";
+
 import { ROOT, SEARCH } from "@/router/pathes";
 
 export default {
   name: "ChatView",
   components: { ChatButton, MessageArea, ChatWindow },
+  mixins: [beforeLeaveMixin],
   data: () => ({
     message: "",
     isPrinting: false,
     messages: [],
-    isOut: false,
   }),
   beforeRouteEnter(to, from, next) {
     if (from.path !== SEARCH) next(ROOT);
     next();
-  },
-  beforeRouteLeave(to, from, next) {
-    if (this.isOut) {
-      next();
-    } else {
-      const MESSAGE =
-        "Do you really want to leave? The chat may be interrupted!";
-      const answer = window.confirm(MESSAGE);
-      this.isOut = answer;
-      next(answer);
-    }
   },
   methods: {
     submitHandler() {
