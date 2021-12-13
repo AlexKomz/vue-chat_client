@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import VueRouter from "vue-router";
+const { isNavigationFailure, NavigationFailureType } = VueRouter;
+
 import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
 import SettingsSVG from "@/assets/settings-icon.svg";
@@ -38,6 +41,11 @@ export default {
     to: { path: location.pathname },
     from: null,
   }),
+  created() {
+    if (this.to.path !== ROOT) {
+      this.$router.push(ROOT);
+    }
+  },
   computed: {
     isMenuPath() {
       return this.to.path === ROOT;
@@ -57,7 +65,11 @@ export default {
   },
   methods: {
     exitClickHandler() {
-      this.$router.push(ROOT);
+      this.$router.replace(ROOT).catch((failure) => {
+        if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
+          return null;
+        }
+      });
     },
     settingsClickHandler() {
       this.$router.push(SETTINGS);
