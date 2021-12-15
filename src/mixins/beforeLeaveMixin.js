@@ -1,11 +1,18 @@
 const beforeLeaveMixin = {
+  data: () => ({ isOut: false }),
   created() {
     window.onbeforeunload = () => "";
   },
   beforeRouteLeave(to, from, next) {
-    const MESSAGE =
-      "Do you really want to leave? Changes made may not be saved!";
-    const answer = window.confirm(MESSAGE);
+    let answer = this.isOut;
+
+    if (!this.isOut) {
+      const MESSAGE =
+        "Do you really want to leave? Changes made may not be saved!";
+      answer = window.confirm(MESSAGE);
+      this.isOut = answer;
+    }
+
     next(answer);
   },
   destroyed() {
