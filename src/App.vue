@@ -10,9 +10,14 @@
 <script>
 import ChatHeader from "@/components/ChatHeader";
 
+// import api from "@/api";
+
 export default {
   name: "App",
   components: { ChatHeader },
+  created() {
+    // api.connect();
+  },
 };
 </script>
 
@@ -25,12 +30,16 @@ export default {
 
   --main-color: #ffffff;
   --black-color: rgba(0, 0, 0, 0.6);
+  --overview-bg-color: rgba(0, 0, 0, 0.1);
 
   --companion-message-bg-color: #e76f3d;
   --message-bg-color: #00a7c7;
 
   --button-bg-focus-color: #008ba7;
   --button-bg-active-color: #9bcfe0;
+
+  --alert-bg-color: rgba(255, 0, 0, 0.5);
+  --success-bg-color: rgba(0, 128, 0, 0.5);
 }
 
 body {

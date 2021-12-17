@@ -1,6 +1,6 @@
 {
   "name": "vue-chat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://alexkomz.github.io/vue-chat_client",
   "main": "main.js",
   "author": "Aleksandr Komzoltsev",
