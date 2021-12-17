@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     closeHandler() {
-      this.$emit("close");
+      this.$emit("popup-close");
     },
   },
 };
@@ -80,6 +80,7 @@ export default {
   background-color: var(--message-bg-color);
 
   cursor: pointer;
+  user-select: none;
 }
 
 .popup_alert {

@@ -1,7 +1,7 @@
 const popupMixin = {
   data: () => ({
     popup: {
-      isShow: true,
+      isShow: false,
       message: "Собеседник отключился",
     },
   }),
