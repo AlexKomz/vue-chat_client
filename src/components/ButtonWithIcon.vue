@@ -1,5 +1,5 @@
 <template>
-  <button class="button">
+  <button class="button" @click="clickHandler">
     <slot />
   </button>
 </template>
@@ -7,6 +7,11 @@
 <script>
 export default {
   name: "ButtonWithIcon",
+  methods: {
+    clickHandler() {
+      this.$emit("click");
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
-import { io } from "socket.io-client";
+import { Manager } from "socket.io-client";
 
 const URL = "http://localhost:3000";
-const socket = io(URL, { autoConnect: false });
 
-export default socket;
+export const manager = new Manager(URL, { autoConnect: false });
+export const socket = manager.socket("/");

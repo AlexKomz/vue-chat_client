@@ -1,5 +1,5 @@
 <template>
-  <button class="submit-button">
+  <button class="submit-button" @click="clickHandler">
     <slot />
   </button>
 </template>
@@ -7,6 +7,11 @@
 <script>
 export default {
   name: "ChatButton",
+  methods: {
+    clickHandler() {
+      this.$emit("click");
+    },
+  },
 };
 </script>
 
@@ -33,6 +38,10 @@ export default {
 }
 
 .submit-button:active {
+  background-color: var(--button-bg-active-color);
+}
+
+.submit-button:disabled {
   background-color: var(--button-bg-active-color);
 }
 </style>
