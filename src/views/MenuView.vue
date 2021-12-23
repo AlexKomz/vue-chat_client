@@ -1,9 +1,17 @@
 <template>
   <BackgroundWrapper>
     <div class="menu">
-      <ChatButton class="menu__start-button" @click.native="clickHandler">
+      <ChatButton
+        :disabled="!!errorMessage"
+        class="menu__start-button"
+        @click="clickHandler"
+      >
         Start chatting!
       </ChatButton>
+
+      <MiniPopup type="alert" :isShow="!!errorMessage">
+        {{ errorMessage }}
+      </MiniPopup>
     </div>
   </BackgroundWrapper>
 </template>
@@ -11,12 +19,24 @@
 <script>
 import BackgroundWrapper from "@/wrappers/BackgroundWrapper";
 import ChatButton from "@/components/ChatButton";
+import MiniPopup from "@/components/MiniPopup";
+
+import api from "@/api";
 
 import { SEARCH } from "@/router/pathes";
 
 export default {
   name: "MenuView",
-  components: { ChatButton, BackgroundWrapper },
+  components: { ChatButton, BackgroundWrapper, MiniPopup },
+  props: {
+    errorMessage: {
+      type: String,
+      default: "",
+    },
+  },
+  async created() {
+    await api.connect();
+  },
   methods: {
     clickHandler() {
       this.$router.push(SEARCH);
@@ -27,6 +47,8 @@ export default {
 
 <style scoped>
 .menu {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;

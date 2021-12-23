@@ -10,6 +10,8 @@
           />
         </ul>
       </div>
+
+      <slot name="popup" />
     </div>
   </BackgroundWrapper>
 </template>
@@ -55,6 +57,8 @@ export default {
   align-items: center;
 
   padding: 20px;
+
+  overflow: hidden;
 }
 
 .chat-window_print:after {

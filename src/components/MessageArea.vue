@@ -1,12 +1,13 @@
 <template>
   <BackgroundWrapper>
     <div
-      class="message-area"
-      :class="{ 'message-area_placeholder': hasPlaceholder }"
+      class="message-area message-area_disabled"
+      :class="{ ...placeholderClass }"
     >
       <textarea
         class="message-area__text"
         :value="message"
+        :disabled="disabled"
         @input="inputHandler"
         @focus="focusHandler"
         @blur="blurHandler"
@@ -15,7 +16,8 @@
 
       <ButtonWithIcon
         class="message-area__emoji"
-        @click.native="emojiPickerToggleHandler"
+        :disabled="disabled"
+        @click="emojiPickerToggleHandler"
       >
         <EmojiSVG class="emoji__icon" />
       </ButtonWithIcon>
@@ -25,6 +27,8 @@
         v-show="isEmojiPickerOpen"
         @emojiClick="emojiClickHandler"
       />
+
+      <div v-if="disabled" class="message-area__overview" />
     </div>
   </BackgroundWrapper>
 </template>
@@ -53,6 +57,10 @@ export default {
       type: String,
       default: "",
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     this.popupItem = this.$el;
@@ -62,8 +70,8 @@ export default {
     isEmojiPickerOpen: false,
   }),
   computed: {
-    hasPlaceholder() {
-      return !this.isFocused && !this.message;
+    placeholderClass() {
+      return { "message-area_placeholder": !this.isFocused && !this.message };
     },
   },
   methods: {
@@ -113,8 +121,6 @@ export default {
 
   content: "Сообщение...";
 
-  display: block;
-
   top: 10px;
   left: 10px;
 }
@@ -142,6 +148,19 @@ export default {
   height: 18px;
 
   fill: var(--black-color);
+}
+
+.message-area__overview {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 10px;
+  background-color: var(--overview-bg-color);
 }
 
 @media (min-width: 426px) {

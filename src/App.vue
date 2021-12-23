@@ -1,23 +1,40 @@
 <template>
   <div class="app">
-    <div class="app__wrapper">
-      <ChatHeader />
-      <RouterView class="app_view" />
-    </div>
+    <PopupWrapper class="app__wrapper">
+      <template #header>
+        <ChatHeader />
+      </template>
+      <template
+        #main="{
+          success,
+          alert,
+          popupType,
+          setSuccess,
+          clearSuccess,
+          clearAlert,
+        }"
+      >
+        <RouterView
+          class="app_view"
+          :successMessage="success"
+          :errorMessage="alert"
+          :popupType="popupType"
+          @setSuccess="setSuccess"
+          @clearSuccess="clearSuccess"
+          @clearAlert="clearAlert"
+        />
+      </template>
+    </PopupWrapper>
   </div>
 </template>
 
 <script>
+import PopupWrapper from "@/wrappers/PopupWrapper";
 import ChatHeader from "@/components/ChatHeader";
-
-// import api from "@/api";
 
 export default {
   name: "App",
-  components: { ChatHeader },
-  created() {
-    // api.connect();
-  },
+  components: { PopupWrapper, ChatHeader },
 };
 </script>
 

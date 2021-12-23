@@ -4,7 +4,7 @@
       <ButtonWithIcon
         v-if="!isMenuPath"
         class="header__exit"
-        @click.native="exitClickHandler"
+        @click="exitClickHandler"
       >
         <ArrowSVG class="arrow__icon" />
       </ButtonWithIcon>
@@ -15,7 +15,7 @@
       <ButtonWithIcon
         v-if="isMenuPath"
         class="header__settings"
-        @click.native="settingsClickHandler"
+        @click="settingsClickHandler"
       >
         <SettingsSVG class="settings__icon" />
       </ButtonWithIcon>

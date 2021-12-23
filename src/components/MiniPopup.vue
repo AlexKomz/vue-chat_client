@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     closeHandler() {
-      this.$emit("popup-close");
+      this.$emit("popupClose");
     },
   },
 };
