@@ -16,6 +16,8 @@
 <script>
 import api from "@/api";
 
+import { ROOT } from "@/router/pathes";
+
 export default {
   name: "PopupWrapper",
   data: () => ({
@@ -29,6 +31,11 @@ export default {
   },
   errorCaptured(error) {
     this.alert = error.message;
+
+    if (error.name === "ConnectionError") {
+      this.$router.replace(ROOT);
+    }
+
     return false;
   },
   computed: {
